@@ -1,0 +1,36 @@
+### Create student
+POST http://localhost:8080/api/students
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name" : "Yaba",
+  "address" : "Kudus",
+  "phone" : "123"
+}
+
+### GET All
+GET http://localhost:8080
+Content-Type: application/json
+Accept: application/json
+
+### GET BY ID
+GET http://localhost:8080/api/students/6957e26ef8d30b3263dec812
+Content-Type: application/json
+Accept: application/json
+
+### UPDATE ONE BY ID
+PUT http://localhost:8080/api/students/6957e26ef8d30b3263dec812
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name" : "Alexa",
+  "address" : "Malang",
+  "phone" : "123"
+}
+
+### DELETE ONE BY ID
+DELETE http://localhost:8080/api/students/6957e3c5994cb885ec683f26
+Content-Type: application/json
+Accept: application/json
