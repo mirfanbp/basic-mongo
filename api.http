@@ -4,8 +4,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name" : "Yaba",
-  "address" : "Kudus",
+  "name" : "Onsom",
+  "address" : "Kediri",
   "phone" : "123"
 }
 
@@ -15,12 +15,12 @@ Content-Type: application/json
 Accept: application/json
 
 ### GET BY ID
-GET http://localhost:8080/api/students/6957e26ef8d30b3263dec812
+GET http://localhost:8080/api/students/696a21ee95a60d15c5063afa
 Content-Type: application/json
 Accept: application/json
 
 ### UPDATE ONE BY ID
-PUT http://localhost:8080/api/students/6957e26ef8d30b3263dec812
+PUT http://localhost:8080/api/students/696a21ee95a60d15c5063afa
 Content-Type: application/json
 Accept: application/json
 
@@ -31,6 +31,34 @@ Accept: application/json
 }
 
 ### DELETE ONE BY ID
-DELETE http://localhost:8080/api/students/6957e3c5994cb885ec683f26
+DELETE http://localhost:8080/api/students/696ae57aaa3ff5cf539e7887
+Content-Type: application/json
+Accept: application/json
+
+
+### GET Count BY Address
+GET http://localhost:8080/api/students/stats/by-address
+Content-Type: application/json
+Accept: application/json
+
+### GET Count BY Address
+GET http://localhost:8080/api/students/stats/by-address/Malang
+Content-Type: application/json
+Accept: application/json
+
+### GET Average BY Address
+GET http://localhost:8080/api/students/stats/avg-math-by-address
+Content-Type: application/json
+Accept: application/json
+
+
+### GET Average BY Address
+GET http://localhost:8080/api/students/stats/avg-math?minAge=20&maxAge=25&page=1&size=3
+Content-Type: application/json
+Accept: application/json
+
+
+### GET Enrollments
+GET http://localhost:8080/api/enrollments?semester=2024-1
 Content-Type: application/json
 Accept: application/json

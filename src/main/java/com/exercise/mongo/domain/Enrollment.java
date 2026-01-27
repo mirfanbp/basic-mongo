@@ -4,15 +4,17 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "courses")
+@Document(collection = "enrollments")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Course {
+public class Enrollment {
     @Id
     private String id;
-    private String title;
-    private Integer credit;
+    private String studentId;
+    private Integer courseId;
+    private String semester; // kapan
+    private Integer score; // hasil
 }
