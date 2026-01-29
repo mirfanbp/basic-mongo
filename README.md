@@ -1,9 +1,9 @@
 # Aggregation Practice (MongoDB)
 
-Latihan dasar MongoDB untuk memahami:
+Basic mongoDB practice to understand:
 - Aggregation Pipeline
 - Embedded Document
-- Referencing antar collection
+- Referenced each collection
 
 ---
 
@@ -43,9 +43,10 @@ Latihan dasar MongoDB untuk memahami:
     "studentId": ObjectId,
     "courseId": ObjectId,
     "semester": String,
-    "score": 85
+    "score": Number
 }
 ```
+---
 
 ## Sample Data
 ### Insert student
