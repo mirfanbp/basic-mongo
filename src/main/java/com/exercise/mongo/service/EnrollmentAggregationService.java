@@ -1,8 +1,8 @@
 package com.exercise.mongo.service;
 
 import com.exercise.mongo.model.EnrollmentResult;
-import com.mongodb.client.MongoClient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -17,8 +17,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EnrollmentAggregationService {
     private final MongoTemplate mongoTemplate;
-    private final MongoClient mongo;
 
+    /* NOTE
+     * Service -> cuma perlu @Cacheable
+     * Berapa lama data di Redis? -> di RedisConfig
+     * Kapan ambil Redis / Mongo? -> di dalam Spring Cache (otomatis)
+     */
+
+    /* Alur
+     * Client request -> @Cacheable intercept
+     */
+
+    @Cacheable(
+            value = "enrollments",
+            key = "#semester + ':' + #page + ':' + #size"
+    )
     public List<EnrollmentResult> findEnrollments(String semester, int page, int size) {
         List<AggregationOperation> operations = new ArrayList<>();
 
@@ -43,7 +56,7 @@ public class EnrollmentAggregationService {
         operations.add(Aggregation.skip((long) page * size));
         operations.add(Aggregation.limit(size));
 
-        // project field
+        // select field that will be show
         operations.add(Aggregation.project()
                 .and("student.name").as("student")
                 .and("course.name").as("course")
@@ -52,7 +65,9 @@ public class EnrollmentAggregationService {
 
         Aggregation aggregation = Aggregation.newAggregation(operations);
 
-        // ???
-        return mongoTemplate.aggregate(aggregation, "enrollments", EnrollmentResult.class).getMappedResults();
+        // get data from mongo use Aggregation
+        List<EnrollmentResult> result = mongoTemplate.aggregate(aggregation, "enrollments", EnrollmentResult.class).getMappedResults();
+        System.out.println("## EnrollmentAggregationService | enrollment size:: " + result.size());
+        return result;
     }
 }

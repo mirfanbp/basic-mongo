@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: basic-mongo
+
+  data:
+    redis:
+      host: localhost
+      port: 6380
+
+  cache:
+    type: redis
+
+  mongodb:
+    host: localhost
+    port: 27018
+    database: studentsdb
+    username: root
+    password: root
+    authentication-database: admin
+
+# ================================
+# Alternative Configurations
+# ================================
+
+# Local MongoDB (URI-based)
+# spring:
+#   data:
+#     mongodb:
+#       uri: mongodb://localhost:27017/studentsdb
+
+# MongoDB with Docker (URI-based)
+# spring:
+#   data:
+#     mongodb:
+#       uri: mongodb://root:root@localhost:27018/studentsdb?authSource=admin
+
+# MongoDB Atlas
+# spring:
+#   data:
+#     mongodb:
+#       uri: mongodb+srv://<username>:<password>@<cluster>.mongodb.net/mygrocerylist
+#       database: mygrocerylist
