@@ -23,9 +23,6 @@ public class StudentController {
     // after
         // Controller → AggregationService → MongoTemplate → Mongo
 
-    // ---
-    // Embedding -> lebih cepat, lebih simpel
-
     private final StudentService studentService;
     private final StudentAggregationService studentAggregationService;
 
